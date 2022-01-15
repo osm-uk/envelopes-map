@@ -12,7 +12,7 @@ const MinZoomIndicator = L.Control.extend({
   },
 
   _addLayer(layer) {
-    let minZoom = 15;
+    let minZoom = 17;
 
     if (layer.options.minZoom) {
       minZoom = layer.options.minZoom;

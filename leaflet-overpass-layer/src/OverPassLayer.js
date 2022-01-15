@@ -6,7 +6,7 @@ import './MinZoomIndicator';
 const OverPassLayer = L.FeatureGroup.extend({
   options: {
     debug: false,
-    minZoom: 15,
+    minZoom: 17,
     endPoint: 'https://overpass-api.de/api/',
     query: '(node({{bbox}})[organic];node({{bbox}})[second_hand];);out qt;',
     loadedBounds: [],
