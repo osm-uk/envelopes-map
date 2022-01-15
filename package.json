@@ -1,0 +1,9 @@
+{
+  "name": "leaflet-overpass-layer-demo",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "leaflet": "1.5.1",
+    "leaflet-overpass-layer": "2.8.3"
+  }
+}
