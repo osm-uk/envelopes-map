@@ -80,38 +80,16 @@ const OverPassLayer = L.FeatureGroup.extend({
     //const link = document.createElement('a');
     const intro = document.createElement('into');
     const table = document.createElement('table');
-    const tr = document.createElement("TR");
-    const th = document.createElement("TH");
     const div = document.createElement('div');
 
     //link.href = `https://www.openstreetmap.org/edit?editor=id&node=${id}`;
     //link.appendChild(document.createTextNode('Edit this entry in iD'));
     
-    intro.innerHTML = 'Here is the address as it would appear on an envelope using the <a href="https://wiki.openstreetmap.org/wiki/Addresses_in_the_United_Kingdom#Tags_to_envelope">strict method</a> designed to highlight addr:* tag issues in OpenStreetMap:';
+    intro.innerHTML = 'Here is the address as it would appear on an envolope using the <a href="https://wiki.openstreetmap.org/wiki/Addresses_in_the_United_Kingdom#Tags_to_envelope">strict method</a> designed to highlight addr:* tag issues in OSM.';
 
-    table.align = 'center';
-    table.style.border = "1px solid";
-    table.style.borderColor = "#f1d592";
-    table.style.borderWidth = '5px 5px 30px 20px';
-    table.style.borderSpacing = '5px';
+    table.style.borderSpacing = '10px';
     table.style.borderCollapse = 'separate';
     table.style.whiteSpace = 'nowrap';
-    table.style.backgroundColor = "#f1d592";
-    table.style.borderRadius = "2px";
-    table.style.boxShadow = "0 2px 5px 0px rgba(0,0,0,.6)";
-    
-    th.style.borderWidth = "2px";
-    th.style.borderStyle = "dashed";
-    th.style.textAlign = "center";
-    th.appendChild(document.createTextNode("affix"));
-    th.appendChild(document.createElement("br"));
-    th.appendChild(document.createTextNode("stamp"));
-    th.appendChild(document.createElement("br"));
-    th.appendChild(document.createTextNode("here"));
-    
-    row = table.insertRow(0);
-    row.insertCell(0).appendChild(document.createTextNode(""));
-    row.insertCell(1).appendChild(th);
 
     //Declare variables
     let addrunit;
@@ -225,11 +203,10 @@ const OverPassLayer = L.FeatureGroup.extend({
         row = table.insertRow(-1);
         row.insertCell(0).appendChild(document.createTextNode(addrpostcode));
 
-    //div.appendChild(link);  
-    div.appendChild(intro);
+    //div.appendChild(link); 
+    div.appendChild(intro);    
     div.appendChild(table);
-    div.appendChild(document.createTextNode('The commas and any parts in [square brackets] have been added in post processing outside of OSM.'));
-    
+    div.appendChild(document.createTextNode('Parts in [square brackets] are optional as they are easier to add in post processing outside of OSM.'));
 
     return div;
   },

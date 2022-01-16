@@ -23,7 +23,7 @@ var icon = new L.Icon.Default();
 
 var opl = new L.OverPassLayer({
 
-    'query': '(way["addr:housenumber"]({{bbox}}););out center;',
+    'query': '(node[~"^addr:.*$"~"."]({{bbox}});way[~"^addr:.*$"~"."]({{bbox}});relation[~"^addr:.*$"~"."]({{bbox}}););out center;',
     markerIcon: icon,
 });
 
