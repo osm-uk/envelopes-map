@@ -19,6 +19,8 @@ var map = new L.Map('map')
 .addLayer(osm)
 .setView(new L.LatLng(55.7, -2.16), 6);
 
+var hash = new L.Hash(map);
+
 var icon = new L.Icon.Default();
 
 var opl = new L.OverPassLayer({
