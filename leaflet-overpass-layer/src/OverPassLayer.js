@@ -137,6 +137,9 @@ const OverPassLayer = L.FeatureGroup.extend({
         }   
         else if (key == "addr:place") {
           addrplace = tags[key];
+        }
+        else if (key == "addr:substreet") {
+          addrsubstreet = tags[key];
         }   
         else if (key == "addr:street") {
           addrstreet = tags[key];
@@ -156,6 +159,16 @@ const OverPassLayer = L.FeatureGroup.extend({
         else {
         }
     }
+    //Pre-processing steps
+    if (typeof addrplace !== 'undefined' && addrplace !== addrsubstreet) {
+          if (typeof addrsubstreet !== 'undefined') {
+            addrsubstreet = addrplace + ' ' + addrsubstreet;
+          }
+          else {
+            addrsubstreet = addrplace;
+          }
+        }
+    
     //Write the address line
         // addressline1
         if (typeof addrunit !== 'undefined' || typeof addrname !== 'undefined') {
@@ -171,13 +184,13 @@ const OverPassLayer = L.FeatureGroup.extend({
           }
         }
   	// addressline2
-        if (typeof addrplace !== 'undefined') {
+        if (typeof addrsubstreet !== 'undefined') {
           row = table.insertRow(-1);
           if (typeof addrnumber !== 'undefined') {
-            row.insertCell(0).appendChild(document.createTextNode(addrnumber + ' ' + addrplace + ','));
+            row.insertCell(0).appendChild(document.createTextNode(addrnumber + ' ' + addrsubstreet + ','));
           }
           else {
-            row.insertCell(0).appendChild(document.createTextNode(addrplace + ','));
+            row.insertCell(0).appendChild(document.createTextNode(addrsubstreet + ','));
           }
         }
         else if (typeof addrstreet !== 'undefined') {
@@ -193,7 +206,7 @@ const OverPassLayer = L.FeatureGroup.extend({
         }
         // addressline3
         /*
-        if (typeof addrplace !== 'undefined') {
+        if (typeof addrsubstreet !== 'undefined') {
           if (typeof addrstreet !== 'undefined') {
             row = table.insertRow(-1);
             row.insertCell(0).appendChild(document.createTextNode(addrstreet + ','));
