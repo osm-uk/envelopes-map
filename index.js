@@ -24,7 +24,6 @@ var hash = new L.Hash(map);
 var icon = new L.Icon.Default();
 
 var opl = new L.OverPassLayer({
-
     'query': '(node[~"^addr:.*$"~"."]({{bbox}});way[~"^addr:.*$"~"."]({{bbox}});relation[~"^addr:.*$"~"."]({{bbox}}););out center;',
     markerIcon: icon,
 });
