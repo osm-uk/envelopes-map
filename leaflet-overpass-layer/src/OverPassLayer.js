@@ -118,6 +118,7 @@ const OverPassLayer = L.FeatureGroup.extend({
     let addrname;
     let addrnumber;
     let addrplace;
+    let addrsubstreet;
     let addrstreet;
     let addrparent;
     let addrsuburb;
@@ -160,15 +161,15 @@ const OverPassLayer = L.FeatureGroup.extend({
         }
     }
     //Pre-processing steps
-    if (typeof addrplace !== 'undefined' && addrplace !== addrsubstreet) {
-          if (typeof addrsubstreet !== 'undefined') {
+    if (typeof addrplace !== 'undefined') {
+        if (typeof addrsubstreet !== 'undefined' && addrplace !== addrsubstreet) {
             addrsubstreet = addrplace + ' ' + addrsubstreet;
-          }
-          else {
-            addrsubstreet = addrplace;
-          }
         }
-    
+        else {
+            addrsubstreet = addrplace;
+        }
+    }
+
     //Write the address line
         // addressline1
         if (typeof addrunit !== 'undefined' || typeof addrname !== 'undefined') {
