@@ -164,8 +164,7 @@ const OverPassLayer = L.FeatureGroup.extend({
     if (typeof addrplace !== 'undefined') {
         if (typeof addrsubstreet !== 'undefined' && addrplace !== addrsubstreet) {
             addrsubstreet = addrplace + ' ' + addrsubstreet;
-        }
-        else {
+        } else {
             addrsubstreet = addrplace;
         }
     }
