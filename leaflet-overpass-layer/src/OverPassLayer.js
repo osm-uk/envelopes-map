@@ -47,7 +47,7 @@ const OverPassLayer = L.FeatureGroup.extend({
           });
         }
 
-        const popupContent = this._getPoiPopupHTML(e.tags, e.id);
+        const popupContent = this._getPoiPopupHTML(e.tags, e.id, e.type);
         const popup = L.popup().setContent(popupContent);
         marker.bindPopup(popup);
 
@@ -75,17 +75,17 @@ const OverPassLayer = L.FeatureGroup.extend({
     this._requestInProgress = false;
   },
 
-  _getPoiPopupHTML(tags, id) {
+  _getPoiPopupHTML(tags, id, type) {
     let row;
-    //const link = document.createElement('a');
-    const intro = document.createElement('into');
+    const link = document.createElement('a');
+    const intro = document.createElement('div');
     const table = document.createElement('table');
     const tr = document.createElement("TR");
     const th = document.createElement("TH");
     const div = document.createElement('div');
 
-    //link.href = `https://www.openstreetmap.org/edit?editor=id&node=${id}`;
-    //link.appendChild(document.createTextNode('Edit this entry in iD'));
+    link.href = `https://www.openstreetmap.org/edit?editor=id&${type}=${id}`;
+    link.appendChild(document.createTextNode('Edit this entry in iD'));
     
     intro.innerHTML = 'Here is the address as it would appear on an envelope using the <a href="https://wiki.openstreetmap.org/wiki/Addresses_in_the_United_Kingdom#Tags_to_envelope">strict method</a> designed to highlight addr:* tag issues in OpenStreetMap:';
 
@@ -238,7 +238,7 @@ const OverPassLayer = L.FeatureGroup.extend({
         row = table.insertRow(-1);
         row.insertCell(0).appendChild(document.createTextNode(addrpostcode));
 
-    //div.appendChild(link);  
+    div.appendChild(link);
     div.appendChild(intro);
     div.appendChild(table);
     div.appendChild(document.createTextNode('The commas and any parts in [square brackets] have been added in post processing outside of OSM.'));
